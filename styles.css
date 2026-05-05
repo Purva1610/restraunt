@@ -1,18 +1,19 @@
 /* =============================================
-   RESTAURANT WEBSITE - IMPROVED STYLESHEET
+   RESTAURANT WEBSITE - IMPROVED INDIAN THEME
    ============================================= */
 
-/* CSS Variables (Easy theming) */
+/* CSS Variables - Indian Warm Theme */
 :root {
-    --primary: #6B2D3B;
-    --primary-light: #8B4A5C;
-    --primary-dark: #5A2532;
-    --accent: #A85A6A;
-    --background: #F5EFE7;
+    --primary: #8B4513;        /* Saddle Brown */
+    --primary-light: #A0522D;   /* Sienna */
+    --primary-dark: #654321;    /* Dark Brown */
+    --accent: #D2691E;          /* Chocolate */
+    --secondary: #228B22;       /* Forest Green accents */
+    --background: #FAF0E6;      /* Linen */
     --light: #FFFFFF;
-    --text: #3C3C3C;
-    --text-light: #555;
-    --gold: #D4AF37;
+    --text: #2F1B14;
+    --text-light: #5D4A3C;
+    --gold: #FF8C00;            /* Dark Orange highlights */
 }
 
 /* Reset & Base Styles */
@@ -95,8 +96,30 @@ a {
 /* =============================================
    HERO & CTAs
    ============================================= */
-.hero, .about-hero, .contact-hero {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+.hero {
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.85) 0%, rgba(160, 82, 45, 0.85) 100%), url('images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--background);
+    padding: 140px 20px 100px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.about-hero {
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.85) 0%, rgba(160, 82, 45, 0.85) 100%), url('images/pexels-jack-baghel-2199968-20422124.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--background);
+    padding: 140px 20px 100px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.contact-hero {
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.85) 0%, rgba(160, 82, 45, 0.85) 100%), url('images/pexels-tamanna-rumee-52377920-8755336.jpg');
+    background-size: cover;
+    background-position: center;
     color: var(--background);
     padding: 140px 20px 100px;
     text-align: center;
@@ -152,6 +175,7 @@ h2 {
     margin-bottom: 3rem;
     color: var(--primary);
     font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .grid {
