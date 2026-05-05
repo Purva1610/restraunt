@@ -1,4 +1,21 @@
-/* Global Styles */
+/* =============================================
+   RESTAURANT WEBSITE - IMPROVED STYLESHEET
+   ============================================= */
+
+/* CSS Variables (Easy theming) */
+:root {
+    --primary: #6B2D3B;
+    --primary-light: #8B4A5C;
+    --primary-dark: #5A2532;
+    --accent: #A85A6A;
+    --background: #F5EFE7;
+    --light: #FFFFFF;
+    --text: #3C3C3C;
+    --text-light: #555;
+    --gold: #D4AF37;
+}
+
+/* Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -7,9 +24,9 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f7f4;
+    line-height: 1.7;
+    color: var(--text);
+    background-color: var(--background);
 }
 
 .container {
@@ -21,31 +38,38 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+    transition: color 0.3s ease;
 }
 
-/* Navigation */
+/* =============================================
+   NAVIGATION
+   ============================================= */
 .navbar {
-    background-color: #1a1a1a;
+    background-color: var(--primary);
     padding: 1rem 0;
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #d4af37;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--background);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.logo i {
+    font-size: 2rem;
 }
 
 .nav-menu {
@@ -55,487 +79,160 @@ a {
 }
 
 .nav-menu a {
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    color: var(--background);
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500;
     transition: all 0.3s ease;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    background-color: #d4af37;
-    color: #1a1a1a;
+    background-color: var(--primary-light);
+    color: var(--background);
 }
 
-/* Hero Section */
-.hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: white;
-    padding: 120px 20px;
+/* =============================================
+   HERO & CTAs
+   ============================================= */
+.hero, .about-hero, .contact-hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--background);
+    padding: 140px 20px 100px;
     text-align: center;
     margin-top: 60px;
 }
 
-.hero-content h1 {
-    font-size: 3.5rem;
+.hero-content h1,
+.about-hero h1,
+.contact-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
     margin-bottom: 1rem;
     font-weight: 300;
     letter-spacing: 2px;
 }
 
-.hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: #d4af37;
+.hero-content p,
+.about-hero p,
+.contact-hero p {
+    font-size: 1.35rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    opacity: 0.95;
 }
 
-/* CTA Button */
 .cta-button {
     display: inline-block;
-    background-color: #d4af37;
-    color: #1a1a1a;
-    padding: 12px 30px;
-    border-radius: 4px;
-    font-weight: bold;
+    background-color: var(--primary-light);
+    color: var(--background);
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 2px solid var(--primary-light);
     transition: all 0.3s ease;
-    cursor: pointer;
-    border: 2px solid #d4af37;
 }
 
 .cta-button:hover {
-    background-color: #b8941f;
-    border-color: #b8941f;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    background-color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(139, 74, 92, 0.35);
 }
 
-/* Featured Section */
-.featured {
-    padding: 60px 20px;
-    background-color: #fff;
+/* =============================================
+   COMMON SECTION STYLES
+   ============================================= */
+section {
+    padding: 80px 20px;
 }
 
-.featured h2 {
+h2 {
+    font-size: 2.6rem;
     text-align: center;
-    font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: #1a1a1a;
+    color: var(--primary);
+    font-weight: 500;
 }
 
-.dish-grid {
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
 
-.dish-card {
-    background: #f9f7f4;
+/* Cards */
+.card {
+    background: var(--light);
     padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border-top: 5px solid var(--primary-light);
 }
 
-.dish-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(107, 45, 59, 0.15);
+    border-top-color: var(--primary);
+}
+
+/* =============================================
+   FEATURED / MENU / BENEFITS
+   ============================================= */
+.dish-grid, .menu-items, .benefits-grid, .values-grid, .awards-grid, .team-grid, .info-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .dish-image {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--primary);
 }
 
-.dish-card h3 {
-    color: #1a1a1a;
-    margin-bottom: 0.5rem;
-}
-
-.price {
-    display: block;
-    color: #d4af37;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-top: 1rem;
-}
-
-/* Why Choose Us */
-.why-us {
-    padding: 60px 20px;
-    background-color: #f9f7f4;
-}
-
-.why-us h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-}
-
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.benefit {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.benefit h3 {
-    color: #1a1a1a;
-    margin-bottom: 1rem;
-}
-
-/* Info Section */
-.info-section {
-    padding: 60px 20px;
-    background-color: white;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.info-box {
-    background: #f9f7f4;
-    padding: 2rem;
-    border-radius: 8px;
-    border-left: 4px solid #d4af37;
-}
-
-.info-box h3 {
-    color: #1a1a1a;
-    margin-bottom: 1rem;
-}
-
-/* Menu Page */
-.menu-section {
-    padding: 60px 20px;
-}
-
-.menu-section h1 {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-}
-
-.menu-category {
-    margin-bottom: 3rem;
-}
-
-.menu-category h2 {
-    font-size: 2rem;
-    color: #d4af37;
-    border-bottom: 2px solid #d4af37;
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-}
-
-.menu-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
+/* Menu Item */
 .menu-item {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--primary-light);
 }
 
 .item-header {
     display: flex;
     justify-content: space-between;
-    align-items: start;
-    margin-bottom: 0.5rem;
+    align-items: flex-start;
+    margin-bottom: 0.8rem;
 }
 
-.item-header h3 {
-    color: #1a1a1a;
-    flex: 1;
+.price {
+    color: var(--primary-light);
+    font-weight: 700;
+    font-size: 1.25rem;
 }
 
-.menu-item p {
-    color: #666;
-    font-size: 0.95rem;
-}
-
-/* About Page */
-.about-hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: white;
-    padding: 100px 20px;
-    text-align: center;
-    margin-top: 60px;
-}
-
-.about-hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    font-weight: 300;
-}
-
-.about-hero p {
-    font-size: 1.3rem;
-    color: #d4af37;
-}
-
-.story-section {
-    padding: 60px 20px;
-    background-color: white;
-}
-
-.story-content h2 {
-    font-size: 2.5rem;
-    color: #1a1a1a;
-    margin-bottom: 2rem;
-}
-
-.story-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 1.5rem;
-}
-
-/* Chef Section */
-.chef-section {
-    padding: 60px 20px;
-    background-color: #f9f7f4;
-}
-
-.chef-section h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-}
-
+/* =============================================
+   CHEF SECTION
+   ============================================= */
 .chef-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 4rem;
     align-items: center;
 }
 
 .chef-image {
     font-size: 8rem;
     text-align: center;
+    color: var(--primary-light);
 }
 
-.chef-bio h3 {
-    font-size: 1.8rem;
-    color: #1a1a1a;
-    margin-bottom: 0.5rem;
-}
-
-.chef-bio .title {
-    color: #d4af37;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    font-style: italic;
-}
-
-.chef-bio p {
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 1rem;
-}
-
-/* Values Section */
-.values-section {
-    padding: 60px 20px;
-    background-color: white;
-}
-
-.values-section h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-}
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-}
-
-.value-card {
-    background: #f9f7f4;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    border-top: 4px solid #d4af37;
-}
-
-.value-card h3 {
-    font-size: 1.3rem;
-    color: #1a1a1a;
-    margin-bottom: 1rem;
-}
-
-/* Awards Section */
-.awards-section {
-    padding: 60px 20px;
-    background-color: #f9f7f4;
-}
-
-.awards-section h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-}
-
-.awards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.award {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.award h3 {
-    color: #1a1a1a;
-    margin-bottom: 0.5rem;
-}
-
-.award p {
-    color: #d4af37;
-    font-size: 0.9rem;
-}
-
-/* Team Section */
-.team-section {
-    padding: 60px 20px;
-    background-color: white;
-}
-
-.team-section h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #1a1a1a;
-}
-
-.team-intro {
-    text-align: center;
-    color: #666;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.team-member {
-    background: #f9f7f4;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.member-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.team-member h4 {
-    color: #1a1a1a;
-    margin-bottom: 0.5rem;
-}
-
-/* Contact Page */
-.contact-hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: white;
-    padding: 100px 20px;
-    text-align: center;
-    margin-top: 60px;
-}
-
-.contact-hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    font-weight: 300;
-}
-
-.contact-hero p {
-    font-size: 1.3rem;
-    color: #d4af37;
-}
-
-.contact-section {
-    padding: 60px 20px;
-    background-color: white;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-}
-
-.contact-info h2,
-.reservation-form h2 {
-    font-size: 2rem;
-    color: #1a1a1a;
-    margin-bottom: 2rem;
-}
-
-.info-item {
-    margin-bottom: 2rem;
-}
-
-.info-item h3 {
-    color: #d4af37;
-    margin-bottom: 0.5rem;
-}
-
-.info-item p {
-    color: #555;
-    line-height: 1.8;
-}
-
-.info-item a {
-    color: #d4af37;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.info-item a:hover {
-    color: #b8941f;
-}
-
-/* Form Styles */
+/* =============================================
+   FORM STYLES
+   ============================================= */
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.6rem;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #1a1a1a;
+    color: var(--primary);
     font-weight: 600;
 }
 
@@ -543,180 +240,77 @@ a {
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 14px;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
     font-family: inherit;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #d4af37;
-    box-shadow: 0 0 5px rgba(212, 175, 55, 0.2);
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 4px rgba(139, 74, 92, 0.15);
 }
 
 .submit-button {
     width: 100%;
-    padding: 12px;
-    background-color: #d4af37;
-    color: #1a1a1a;
+    padding: 14px;
+    background: var(--primary-light);
+    color: white;
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .submit-button:hover {
-    background-color: #b8941f;
+    background: var(--accent);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
 }
 
-.form-note {
-    text-align: center;
-    color: #666;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-}
-
-/* Additional Info Section */
-.additional-info {
-    padding: 60px 20px;
-    background-color: #f9f7f4;
-}
-
-.additional-info h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-}
-
-.additional-info .info-box {
-    background: white;
-    border-left: 4px solid #d4af37;
-}
-
-/* CTA Section */
-.cta-section {
-    padding: 60px 20px;
-    text-align: center;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: white;
-}
-
-.cta-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-/* Footer */
+/* =============================================
+   FOOTER
+   ============================================= */
 .footer {
-    background-color: #1a1a1a;
-    color: white;
-    padding: 2rem;
+    background-color: var(--primary);
+    color: var(--background);
+    padding: 3rem 20px 2rem;
     text-align: center;
-    border-top: 2px solid #d4af37;
+    border-top: 4px solid var(--primary-light);
 }
 
-.footer p {
-    margin: 0.5rem 0;
-}
-
-/* Responsive Design */
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
 @media (max-width: 768px) {
     .nav-menu {
         flex-direction: column;
         gap: 0.5rem;
     }
 
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        font-size: 1.1rem;
-    }
-
     .chef-content,
     .contact-grid {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
-    .chef-image {
-        font-size: 5rem;
-    }
-
-    .menu-items,
-    .dish-grid,
-    .benefits-grid,
-    .values-grid,
-    .awards-grid,
-    .team-grid,
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .featured h2,
-    .why-us h2,
-    .about-hero h1,
-    .story-content h2,
-    .chef-section h2,
-    .values-section h2,
-    .awards-section h2,
-    .team-section h2,
-    .contact-hero h1,
-    .additional-info h2,
-    .cta-section h2,
-    .menu-section h1 {
-        font-size: 2rem;
-    }
-
-    .item-header {
-        flex-direction: column;
-    }
-
-    .price {
-        margin-top: 0.5rem;
+    h2 {
+        font-size: 2.2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 1.5rem;
+    .hero, .about-hero, .contact-hero {
+        padding: 80px 20px 60px;
     }
-
-    .nav-menu {
-        gap: 0.25rem;
-    }
-
+    
     .nav-menu a {
-        padding: 0.3rem 0.5rem;
-        font-size: 0.9rem;
-    }
-
-    .hero {
-        padding: 60px 20px;
-        margin-top: 50px;
-    }
-
-    .story-content h2,
-    .featured h2,
-    .menu-section h1 {
-        font-size: 1.5rem;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.95rem;
     }
 }
