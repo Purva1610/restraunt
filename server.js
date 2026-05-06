@@ -42,7 +42,8 @@ app.get('/menu', (req, res) => {
   res.json(menu);
 });
 
-app.listen(PORT, () => {
-  app.listen(3000, '0.0.0.0', () => { ... });
+// Fixed: Correctly binding to 0.0.0.0 for Docker networking
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server is live on http://0.0.0:${PORT}`);
   console.log('📍 Location: Nainital, Uttarakhand, India');
 });
