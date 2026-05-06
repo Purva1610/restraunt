@@ -4,6 +4,7 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || 'localhost';
 
 // Middleware
 app.use(cors());
@@ -42,7 +43,19 @@ app.get('/menu', (req, res) => {
   res.json(menu);
 });
 
-app.listen(PORT, () => {
-  console.log(`🌿 Vegetarian Indian Restaurant running on http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`🌿 Vegetarian Indian Restaurant running on http://${HOST}:${PORT}`);
   console.log('📍 Location: Nainital, Uttarakhand, India');
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+});
+
+// Error handling
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Rejection:', err);
+  process.exit(1);
 });

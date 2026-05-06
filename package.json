@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "echo 'Build script - no build needed for Node.js server'",
+    "test": "echo 'Test script - tests would go here'"
   },
   "keywords": [
     "restaurant",
