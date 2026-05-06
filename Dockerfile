@@ -4,21 +4,22 @@ RUN apk add --no-cache nodejs npm
 
 WORKDIR /app
 COPY package*.json ./
-# Install only production dependencies to keep things light
+# Install only production dependencies
 RUN npm ci --only=production
 
 COPY . .
 
 # Stage 2: Runtime
 FROM alpine:3.19
-# Only install the nodejs runtime, not npm
-RUN apk add --no-cache nodejs
+RUN apk add --no-cache nodejs \
+    # Create the 'node' user and group manually
+    && addgroup -S node && adduser -S node -G node
 
 WORKDIR /app
-# Copy only the necessary files from the builder
-COPY --from=builder /app .
+# Copy from builder and ensure files are owned by the new 'node' user
+COPY --from=builder --chown=node:node /app .
 
-# Run as a non-privileged user for security
+# Switch to the non-root user
 USER node
 
 EXPOSE 3000
