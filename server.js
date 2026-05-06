@@ -43,8 +43,10 @@ app.get('/menu', (req, res) => {
   res.json(menu);
 });
 
-app.listen(PORT, HOST, () => {
-  console.log(`🌿 Vegetarian Indian Restaurant running on http://${HOST}:${PORT}`);
+// Bind to 0.0.0.0 for Docker compatibility, fallback to HOST for local development
+const bindAddress = process.env.NODE_ENV === 'production' ? '0.0.0.0' : (HOST || 'localhost');
+app.listen(PORT, bindAddress, () => {
+  console.log(`🌿 Vegetarian Indian Restaurant running on http://${bindAddress}:${PORT}`);
   console.log('📍 Location: Nainital, Uttarakhand, India');
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
