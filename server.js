@@ -43,6 +43,6 @@ app.get('/menu', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🌿 Vegetarian Indian Restaurant running on http://localhost:${PORT}`);
+  app.listen(3000, '0.0.0.0', () => { ... });
   console.log('📍 Location: Nainital, Uttarakhand, India');
 });
