@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashoka's Vegetarian Kitchen - Nainital</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">🌿 Ashoka's Kitchen</div>
+      <ul class="nav-menu">
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/menu">Menu</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="background-image: url('/images/hero.jpg');">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Ashoka's Vegetarian Kitchen</h1>
+      <p>Experience Authentic Vegetarian Indian Cuisine in Nainital</p>
+      <div class="hero-buttons">
+        <button class="cta-button primary" onclick="document.getElementById('reservation').scrollIntoView({behavior: 'smooth'})">Reserve a Table</button>
+        <button class="cta-button secondary" onclick="document.querySelector('a[href=\"/menu\"]').click()">View Menu</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Dishes -->
+  <section class="featured">
+    <h2>✨ Our Signature Dishes</h2>
+    <div class="dishes-grid">
+      <div class="dish-card">
+        <img src="/images/pexels-dhiraj-jain-207743066-12737915.jpg" alt="Paneer Tikka">
+        <h3>Paneer Tikka Masala</h3>
+        <p>Cottage cheese in a rich tomato-based gravy</p>
+        <span class="price">₹ 320</span>
+      </div>
+      <div class="dish-card">
+        <img src="/images/pexels-paulina-klys-2155606640-34799292.jpg" alt="Biryani">
+        <h3>Vegetable Biryani</h3>
+        <p>Fragrant rice with seasonal vegetables</p>
+        <span class="price">₹ 280</span>
+      </div>
+      <div class="dish-card">
+        <img src="/images/pexels-aperture-photography-2919538-28445587.jpg" alt="Dal Makhani">
+        <h3>Dal Makhani</h3>
+        <p>Creamy lentil preparation with butter</p>
+        <span class="price">₹ 250</span>
+      </div>
+      <div class="dish-card">
+        <img src="/images/pexels-jack-baghel-2199968-20422124.jpg" alt="Chikhalwali">
+        <h3>Chikhalwali Khichdi</h3>
+        <p>Traditional comforting rice and lentil dish</p>
+        <span class="price">₹ 220</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-choose">
+    <h2>Why Choose Ashoka's Kitchen?</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🥬</div>
+        <h3>100% Vegetarian</h3>
+        <p>Pure vegetarian cuisine, no compromise on taste</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👨‍🍳</div>
+        <h3>Expert Chefs</h3>
+        <p>Experienced chefs with 20+ years in Indian cuisine</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🌾</div>
+        <h3>Fresh Ingredients</h3>
+        <p>Locally sourced organic vegetables daily</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🏔️</div>
+        <h3>Nainital Charm</h3>
+        <p>Beautiful mountain views with authentic taste</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <h2>🏪 Experience Ashoka's Kitchen</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item large">
+        <img src="/images/pexels-emrah-i-slamoglu-709221027-28460693.jpg" alt="Restaurant">
+        <div class="gallery-overlay">Restaurant Ambiance</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/pexels-tamanna-rumee-52377920-8755336.jpg" alt="Dish">
+        <div class="gallery-overlay">Delicious Dishes</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/pexels-vishv-shah-2160477459-36925840.jpg" alt="Cuisine">
+        <div class="gallery-overlay">Authentic Cuisine</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Section -->
+  <section class="reservation" id="reservation">
+    <h2>✨ Reserve Your Table</h2>
+    <p class="reservation-subtitle">Book your perfect dining experience at Ashoka's Kitchen</p>
+    <form id="reservationForm" class="reservation-form">
+      <div class="form-group">
+        <input type="text" placeholder="👤 Your Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="✉️ Email Address" required>
+      </div>
+      <div class="form-group">
+        <input type="tel" placeholder="📱 Phone Number" required>
+      </div>
+      <div class="form-group">
+        <input type="date" required>
+      </div>
+      <div class="form-group">
+        <input type="time" required>
+      </div>
+      <div class="form-group">
+        <select required>
+          <option value="">👥 Number of Guests</option>
+          <option value="1">1 Guest</option>
+          <option value="2">2 Guests</option>
+          <option value="3">3 Guests</option>
+          <option value="4">4 Guests</option>
+          <option value="5">5 Guests</option>
+          <option value="6+">6+ Guests</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">🎉 Reserve Now</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>🌿 Ashoka's Kitchen</h4>
+        <p>100% Vegetarian Indian Restaurant</p>
+      </div>
+      <div class="footer-section">
+        <h4>📍 Location</h4>
+        <p>Nainital, Uttarakhand, India</p>
+        <p>Mall Road, Nainital - 263001</p>
+      </div>
+      <div class="footer-section">
+        <h4>📞 Contact</h4>
+        <p>Phone: +91 59425 12345</p>
+        <p>Mobile: +91 94567 89012</p>
+      </div>
+      <div class="footer-section">
+        <h4>⏰ Hours</h4>
+        <p>Mon-Sun: 10:00 AM - 11:00 PM</p>
+        <p>Lunch: 12:00 PM - 3:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Ashoka's Vegetarian Kitchen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,63 +1,47 @@
 const express = require('express');
-const cors = require('cors');
 const path = require('path');
-
 const app = express();
-const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || 'localhost';
+const PORT = 3000;
 
 // Middleware
-app.use(cors());
-app.use(express.static('public'));
-app.use('/images', express.static('images'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Set view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Routes
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.render('index');
 });
 
 app.get('/menu', (req, res) => {
-  const menu = {
-    appetizers: [
-      { name: 'समोसा (Samosa)', price: '₹80', description: 'Crispy fried pastry with spiced potato filling' },
-      { name: 'ब्रेड पकोड़ा (Bread Pakora)', price: '₹120', description: 'Soft bread fritters with aromatic spices' },
-      { name: 'पनीर टिक्का (Paneer Tikka)', price: '₹200', description: 'Grilled cottage cheese marinated in yogurt spices' }
-    ],
-    mainCourses: [
-      { name: 'छोले भठूरे (Chhole Bhature)', price: '₹150', description: 'Fluffy fried bread with spiced chickpeas' },
-      { name: 'डाल मखनी (Dal Makhani)', price: '₹180', description: 'Creamy lentils cooked in butter and cream' },
-      { name: 'पनीर बटर मसाला (Paneer Butter Masala)', price: '₹220', description: 'Cottage cheese in creamy tomato sauce' },
-      { name: 'आलू गोबी (Aloo Gobi)', price: '₹160', description: 'Potatoes and cauliflower with aromatic spices' }
-    ],
-    breads: [
-      { name: 'नान (Naan)', price: '₹60', description: 'Soft Indian bread baked in clay oven' },
-      { name: 'रोटी (Roti)', price: '₹40', description: 'Whole wheat Indian bread' },
-      { name: 'पराठा (Paratha)', price: '₹80', description: 'Layered Indian bread with butter' }
-    ],
-    beverages: [
-      { name: 'मसाला चाय (Masala Chai)', price: '₹50', description: 'Spiced Indian tea' },
-      { name: 'लस्सी (Lassi)', price: '₹80', description: 'Yogurt based sweet drink' },
-      { name: 'जलेबी पानी (Jalebi Water)', price: '₹40', description: 'Refreshing sweetened water' }
-    ]
-  };
-  res.json(menu);
+  res.render('menu');
 });
 
-// Bind to 0.0.0.0 for Docker compatibility, fallback to HOST for local development
-const bindAddress = process.env.NODE_ENV === 'production' ? '0.0.0.0' : (HOST || 'localhost');
-app.listen(PORT, bindAddress, () => {
-  console.log(`🌿 Vegetarian Indian Restaurant running on http://${bindAddress}:${PORT}`);
-  console.log('📍 Location: Nainital, Uttarakhand, India');
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+app.get('/about', (req, res) => {
+  res.render('about');
 });
 
-// Error handling
-process.on('uncaughtException', (err) => {
-  console.error('Uncaught Exception:', err);
-  process.exit(1);
+app.get('/contact', (req, res) => {
+  res.render('contact');
 });
 
-process.on('unhandledRejection', (err) => {
-  console.error('Unhandled Rejection:', err);
-  process.exit(1);
+app.post('/reservation', (req, res) => {
+  const { name, email, phone, date, time, guests } = req.body;
+  console.log('Reservation received:', { name, email, phone, date, time, guests });
+  res.json({ success: true, message: 'Reservation received! We will confirm shortly.' });
+});
+
+app.post('/contact-us', (req, res) => {
+  const { name, email, message } = req.body;
+  console.log('Contact message received:', { name, email, message });
+  res.json({ success: true, message: 'Thank you for your message! We will get back to you soon.' });
+});
+
+app.listen(PORT, () => {
+  console.log(`🍃 Restaurant website is running on http://localhost:${PORT}`);
+  console.log('Press Ctrl+C to stop the server');
 });
