@@ -1,5 +1,5 @@
 services:
-  webapp:
-  build: .
-  ports:
-    -"3000:3000"
+  web_app:            # 2 spaces
+    build: .          # 4 spaces
+    ports:            # 4 spaces
+      - "3000:3000"   # 6 spaces (Must be a list starting with a dash)
