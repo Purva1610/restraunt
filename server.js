@@ -42,6 +42,6 @@ app.post('/contact-us', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🍃 Restaurant website is running on http://localhost:${PORT}`);
+  console.log(`🍃 Hari's Kitchen is running on http://localhost:${PORT}`);
   console.log('Press Ctrl+C to stop the server');
 });
